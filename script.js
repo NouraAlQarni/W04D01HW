@@ -5,15 +5,12 @@ function handleError ( err ){
 async function fetchBook (){
     let bookFetch = await fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:0747532699").catch(handleError);
     if (bookFetch.ok) {
-    let bookResponse = await bookFetch.json();
-
-    console.log (`Title is ${bookResponse.items[0]["volumeInfo"]["title"]}`);
-    console.log (`Description is ${bookResponse.items[0]["volumeInfo"]["description"]}`);
-
+        let bookResponse = await bookFetch.json();
+        console.log (`Title is ${bookResponse.items[0]["volumeInfo"]["title"]}`);
+        console.log (`Description is ${bookResponse.items[0]["volumeInfo"]["description"]}`);
     }else{
         Promise.reject(bookFetch)
     }
-
 }
 fetchBook();
 
@@ -34,6 +31,6 @@ function testTimeOut(){
 
 function clearTimeOut(){
     clearTimeout (timer);
-        timeOutText.innerText = "The time out has been cleared";
-        timeOutText.style = "";
+    timeOutText.innerText = "The time out has been cleared";
+    timeOutText.style = "";
 }
